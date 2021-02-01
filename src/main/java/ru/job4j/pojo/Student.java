@@ -7,6 +7,15 @@ public class Student {
     private String groop;
     private Date dataReceipt;
 
+    public Student() {
+    }
+
+    public Student(String fio, String groop, Date dataReceipt) {
+        this.fio = fio;
+        this.groop = groop;
+        this.dataReceipt = dataReceipt;
+    }
+
     public String getFio() {
         return fio;
     }
