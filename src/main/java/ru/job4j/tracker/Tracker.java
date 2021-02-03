@@ -25,7 +25,7 @@ public class Tracker {
     public Item[] findByName(String key) {
         int size = 0;
         Item[] massName = new Item[items.length];
-        for(int i = 0; i < items.length; i++) {
+        for(int i = 0; i < this.size; i++) {
             if(items[i].getName().equals(key)) {
                 massName[size] = items[i];
                 size++;
