@@ -16,5 +16,8 @@ public class StartUI {
         Item findIt = list.findById(numb);
         System.out.println("под номером " + numb + " записан: " + findIt.getName());
 
+        Item itemPrint = new Item(77, "Print");
+        System.out.println(itemPrint.toString());
+
     }
 }
