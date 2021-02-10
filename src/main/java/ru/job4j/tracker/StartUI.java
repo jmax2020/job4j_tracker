@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    public static void createItem(Input input, Tracker tracker) {
+    public static void createItem(Tracker tracker, Input input) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
         Item item = new Item();
@@ -28,8 +28,7 @@ public class StartUI {
         }
     }
 
-    public static void deteleItem(Tracker tracker) {
-        ConsoleInput inp = new ConsoleInput();
+    public static void deteleItem(Tracker tracker, Input inp) {
         int id = inp.askInt("Insert Id: ");
         if(tracker.delete(id)) {
             System.out.println("Well done!");
@@ -38,8 +37,7 @@ public class StartUI {
         }
     }
 
-    public static void findItemById(Tracker tracker) {
-        ConsoleInput inp = new ConsoleInput();
+    public static void findItemById(Tracker tracker, Input inp) {
         int id = inp.askInt("Введите искомый Id: ");
         Item item = tracker.findById(id);
         if(item != null) {
@@ -49,8 +47,7 @@ public class StartUI {
         }
     }
 
-    public static void findItemByName(Tracker tracker) {
-        ConsoleInput inp = new ConsoleInput();
+    public static void findItemByName(Tracker tracker, Input inp) {
         Item[] mass = tracker.findByName(inp.askStr("Insert name"));
         if(mass.length > 0) {
             for(int i =0; i < mass.length; i++) {
@@ -67,17 +64,17 @@ public class StartUI {
             this.showMenu();
             int select = input.askInt("Select: ");
             if (select == 0) {
-                StartUI.createItem(input, tracker);
+                StartUI.createItem(tracker, input);
             } else if(select == 1) {
                 StartUI.findAllItem(tracker);
             } else if(select == 2) {
                 StartUI.replaceItem(tracker, input);
             } else if(select == 3) {
-                StartUI.deteleItem(tracker);
+                StartUI.deteleItem(tracker, input);
             } else if (select == 4) {
-                StartUI.findItemById(tracker);
+                StartUI.findItemById(tracker, input);
             } else if(select ==5) {
-                StartUI.findItemByName(tracker);
+                StartUI.findItemByName(tracker, input);
             } else if(select == 6) {
                 run = false;
             }
