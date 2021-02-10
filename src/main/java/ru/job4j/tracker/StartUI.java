@@ -10,8 +10,7 @@ public class StartUI {
         tracker.add(item);
     }
 
-    public static void replaceItem(Tracker tracker) {
-        Input inp = new ConsoleInput() ;
+    public static void replaceItem(Tracker tracker, Input inp) {
         int id = inp.askInt("Insert id: ");
         String name = inp.askStr("Insert name: ");
         Item newItem = new Item(id, name);
@@ -72,7 +71,7 @@ public class StartUI {
             } else if(select == 1) {
                 StartUI.findAllItem(tracker);
             } else if(select == 2) {
-                StartUI.replaceItem(tracker);
+                StartUI.replaceItem(tracker, input);
             } else if(select == 3) {
                 StartUI.deteleItem(tracker);
             } else if (select == 4) {
