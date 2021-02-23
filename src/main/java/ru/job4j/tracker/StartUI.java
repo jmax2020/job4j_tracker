@@ -1,9 +1,14 @@
 package ru.job4j.tracker;
 
-import javax.swing.*;
+//import javax.swing.*;
 
 public class StartUI {
+    private final Output out;
 
+    public StartUI(Output out) {
+        this.out = out;
+    }
+/*
     public static void createItem(Tracker tracker, Input input) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -59,7 +64,7 @@ public class StartUI {
             System.out.println("Заявки с таким именем не найдены!");
         }
     }
-
+*/
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
@@ -71,16 +76,17 @@ public class StartUI {
     }
 
     private void showMenu(UserAction[] actions) {
-        System.out.println("Menu.");
+        out.println("Menu.");
         for(int i = 0; i < actions.length; i++) {
-            System.out.println(i + ". " + actions[i].name());
+            out.println(i + ". " + actions[i].name());
         }
     }
 
     public static void main(String[] args) {
+        Output output = new ConsoleOutput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new FindAllAction(), new ReplaceAction(), new DeleteAction(), new FindItemByIDAction(), new FindItemByNameAction(), new ExitAction()};
-        new StartUI().init(input, tracker, actions);
+        UserAction[] actions = {new CreateAction(output), new FindAllAction(), new ReplaceAction(), new DeleteAction(), new FindItemByIDAction(), new FindItemByNameAction(), new ExitAction()};
+        new StartUI(output).init(input, tracker, actions);
     }
 }
